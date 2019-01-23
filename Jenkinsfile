@@ -1,21 +1,12 @@
-pipeline {
-    agent any
+@Library('outsider')
+import org.test.Bar
+import org.test.Configurer
 
-    stages {
-        stage('Build') {
-            steps {
-                echo 'Building..'
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-            }
-        }
-    }
+node {
+   echo 'Hello World'
+   println "yoohoo"
+   Bar bar = new Bar()
+   println bar.class
+   Configurer configurer = new Configurer(this)
+   configurer.configure()
 }
